@@ -1,7 +1,6 @@
-package com.example.Forum.model;
+package com.example.Forum.models;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +20,5 @@ public class Post {
     @Column(name="content", nullable = false, length = 500)
     private String content;
 }
+
 

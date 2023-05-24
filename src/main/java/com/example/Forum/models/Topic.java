@@ -1,7 +1,6 @@
-package com.example.Forum.model;
+package com.example.Forum.models;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Topic {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "topicId")
     private Long topicId;
     @Column(name = "title", nullable = false, length = 50)
