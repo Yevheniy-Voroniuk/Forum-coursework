@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -14,13 +16,16 @@ public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
 
     @Override
-    public Post createPost(Post post) {
-        return postRepository.save(post);
+    public void createPost(Post post) {
+        postRepository.save(post);
     }
 
     @Override
-    public void deletePost(Long postId) {
-        postRepository.deleteById(postId);
+    public List<Post> getAllPostsByTopic(Long topicId) {
+        return postRepository.findByTopicTopicId(topicId);
     }
 
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
+    }
 }

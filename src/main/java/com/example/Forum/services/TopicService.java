@@ -5,8 +5,10 @@ import com.example.Forum.models.Topic;
 import java.util.List;
 
 public interface TopicService {
-    Topic createTopic(Topic topic);
-    Topic updateTopic(Long topicId, Topic updatedTopic);
-    void deleteTopic(Long topicId);
+
+    void createTopic(Topic topic);
+
     List<Topic> getAllTopics();
+
+    Topic getTopicById(Long topicId);
 }

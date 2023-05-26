@@ -2,7 +2,12 @@ package com.example.Forum.services;
 
 import com.example.Forum.models.Post;
 
+import java.util.List;
+
 public interface PostService {
-    Post createPost(Post post);
-    void deletePost(Long postId);
+    void createPost(Post post);
+
+    List<Post> getAllPostsByTopic(Long topicId);
+
+    List<Post> getAllPosts();
 }
