@@ -2,6 +2,7 @@ package com.example.Forum.controllers;
 
 import com.example.Forum.models.Topic;
 import com.example.Forum.services.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class TopicController {
     private final TopicService topicService;
 
+    @Autowired
     public TopicController(TopicService topicService) {
         this.topicService = topicService;
     }
@@ -28,7 +30,7 @@ public class TopicController {
     }
 
     @PostMapping("/topic/add")
-    public String createTopicSubmit(@ModelAttribute("topic") Topic topic) {
+    public String createTopicSubmit(@ModelAttribute Topic topic) {
         topicService.createTopic(topic);
         return "redirect:/topic";
     }
