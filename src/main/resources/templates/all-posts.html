@@ -21,7 +21,7 @@
 <body>
 <header th:insert="~{blocks/header :: header}"></header>
 <div class="container mt-5">
-  <h1>Усі пости</h1>
+  <h2 class="text-center">Усі пости</h2>
   <div th:each="post : ${posts}" class="post-box">
     <div class="topic-title" th:text="${post.topic.title}"></div>
     <h4 th:text="${post.title}"></h4>
