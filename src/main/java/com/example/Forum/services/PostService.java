@@ -10,4 +10,6 @@ public interface PostService {
     List<Post> getAllPostsByTopic(Long topicId);
 
     List<Post> getAllPosts();
+
+    Post getPostById(Long postId);
 }

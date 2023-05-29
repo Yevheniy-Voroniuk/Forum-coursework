@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "post")
 @Data
@@ -25,4 +28,15 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "topicId")
     private Topic topic;
+
+    @ManyToOne
+    @JoinColumn(name = "authorId")
+    private User author;
+
+    @ManyToOne
+    @JoinColumn(name = "parentPostId")
+    private Post parentPost;
+
+    @OneToMany(mappedBy = "parentPost", cascade = CascadeType.ALL)
+    private List<Post> comments = new ArrayList<>();
 }

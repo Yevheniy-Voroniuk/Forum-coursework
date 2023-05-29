@@ -29,9 +29,16 @@
         <div th:each="post : ${posts}" class="post-box">
             <h4 th:text="${post.title}" class="text-left"></h4>
             <p th:text="${post.content}" class="text-left"></p>
+            <p>Автор: <span th:text="${post.author.username}"></span></p>
+            <a th:href="@{/topic/{topicId}/{postId}(topicId=${post.topic.topicId}, postId=${post.postId})}">
+                Детальніше
+            </a>
         </div>
     </div>
-    <a th:href="@{/topic/{topicId}/add(topicId=${topicId})}" class="btn btn-primary">Створити допис</a>
+    <div>
+        <a th:href="@{/topic/{topicId}/add(topicId=${topicId})}" class="btn btn-primary-center">Створити допис</a>
+    </div>
+    <div th:each="post : ${posts}"></div>
 </div>
 <div th:insert="~{blocks/footer :: footer}"></div>
 </body>
