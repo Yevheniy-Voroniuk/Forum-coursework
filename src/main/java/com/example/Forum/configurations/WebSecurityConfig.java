@@ -22,9 +22,9 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-//                        .requestMatchers("/topic/add")
-//                        .hasRole("ADMIN")
-                        .requestMatchers("/topic/{topicId}/add", "//topic/{topicId}/{postId}/add", "/topic/add", "/topic/{topicId}/{postId}/add-comment")
+                        .requestMatchers("/topic/add")
+                        .hasAuthority("ADMIN")
+                        .requestMatchers("/topic/{topicId}/add", "//topic/{topicId}/{postId}/add", "/topic/{topicId}/{postId}/add-comment")
                         .authenticated()
                         .anyRequest()
                         .permitAll()
@@ -39,7 +39,7 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public PasswordEncoder PasswordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

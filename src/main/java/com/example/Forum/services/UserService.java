@@ -7,5 +7,7 @@ public interface UserService extends UserDetailsService {
 
     void save(User user);
 
+    void saveAdmin(User admin);
+
     User findByUsername(String username);
 }
