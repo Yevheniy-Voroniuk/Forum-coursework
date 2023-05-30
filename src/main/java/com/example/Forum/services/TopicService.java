@@ -13,4 +13,6 @@ public interface TopicService {
     Topic getTopicById(Long topicId);
 
     void updateTopic(Topic updatedTopic);
+
+    void deleteTopic(Topic topic);
 }

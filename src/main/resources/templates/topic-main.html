@@ -17,7 +17,13 @@
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 20px;
-            width: 400px;
+            width: 600px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .edit-delete-buttons {
+            display: flex;
         }
 
         .edit-button {
@@ -36,8 +42,16 @@
     <div class="topic-container">
         <div th:each="topic : ${topics}" class="topic-box">
             <h4 th:text="${topic.title}" class="text-left"></h4>
-            <a th:href="@{/topic/{topicId}(topicId=${topic.topicId})}">Переглянути дописи</a>
-            <a th:href="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" class="edit-button">Редагувати</a>
+            <div class="edit-delete-buttons">
+                <a th:href="@{/topic/{topicId}(topicId=${topic.topicId})}">Переглянути дописи</a>
+                <a th:href="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" class="edit-button">Редагувати</a>
+                <hr>
+                <hr>
+                <form th:action="@{/topic/{topicId}/remove(topicId=${topic.topicId})}" method="post">
+                    <button type="submit" class="btn btn-danger">Видалити</button>
+                </form>
+
+            </div>
         </div>
     </div>
 </div>

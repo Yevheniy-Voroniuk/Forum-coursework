@@ -46,8 +46,14 @@ public class TopicController {
     public String editTopicSubmit(@PathVariable("topicId") Long topicId, @ModelAttribute Topic updatedTopic) {
         Topic topic = topicService.getTopicById(topicId);
         topic.setTitle(updatedTopic.getTitle());
-        topic.setTitle(updatedTopic.getTitle());
         topicService.updateTopic(topic);
+        return "redirect:/topic";
+    }
+
+    @PostMapping("/topic/{topicId}/remove")
+    public String deleteTopic(@PathVariable("topicId") Long topicId) {
+        Topic topic = topicService.getTopicById(topicId);
+        topicService.deleteTopic(topic);
         return "redirect:/topic";
     }
 }

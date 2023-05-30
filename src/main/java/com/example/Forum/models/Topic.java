@@ -1,11 +1,11 @@
 package com.example.Forum.models;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.*;
+import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "topic")
@@ -21,6 +21,6 @@ public class Topic {
     @Column(name = "title", nullable = false, length = 50)
     private String title;
 
-    @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "topic", cascade = CascadeType.REMOVE)
     private List<Post> posts;
 }

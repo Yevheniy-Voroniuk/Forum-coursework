@@ -1,10 +1,10 @@
 package com.example.Forum.models;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,10 +33,6 @@ public class Post {
     @JoinColumn(name = "authorId")
     private User author;
 
-    @ManyToOne
-    @JoinColumn(name = "parentPostId")
-    private Post parentPost;
-
-    @OneToMany(mappedBy = "parentPost", cascade = CascadeType.ALL)
-    private List<Post> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
+    private List<Comment> comments = new ArrayList<>();
 }
