@@ -22,7 +22,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/topic/add")
+                        .requestMatchers("/topic/add", "/topic/{topicId}/edit")
                         .hasAuthority("ADMIN")
                         .requestMatchers("/topic/{topicId}/add", "//topic/{topicId}/{postId}/add", "/topic/{topicId}/{postId}/add-comment")
                         .authenticated()

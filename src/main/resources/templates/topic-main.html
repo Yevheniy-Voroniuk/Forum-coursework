@@ -19,6 +19,14 @@
             margin-bottom: 20px;
             width: 400px;
         }
+
+        .edit-button {
+            background-color: orange;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -29,6 +37,7 @@
         <div th:each="topic : ${topics}" class="topic-box">
             <h4 th:text="${topic.title}" class="text-left"></h4>
             <a th:href="@{/topic/{topicId}(topicId=${topic.topicId})}">Переглянути дописи</a>
+            <a th:href="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" class="edit-button">Редагувати</a>
         </div>
     </div>
 </div>

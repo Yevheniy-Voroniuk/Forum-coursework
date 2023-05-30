@@ -11,4 +11,6 @@ public interface TopicService {
     List<Topic> getAllTopics();
 
     Topic getTopicById(Long topicId);
+
+    void updateTopic(Topic updatedTopic);
 }

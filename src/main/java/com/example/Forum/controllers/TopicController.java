@@ -34,4 +34,20 @@ public class TopicController {
         topicService.createTopic(topic);
         return "redirect:/topic";
     }
+
+    @GetMapping("/topic/{topicId}/edit")
+    public String editTopicForm(@PathVariable("topicId") Long topicId, Model model) {
+        Topic topic = topicService.getTopicById(topicId);
+        model.addAttribute("topic", topic);
+        return "topic-edit";
+    }
+
+    @PostMapping("/topic/{topicId}/edit")
+    public String editTopicSubmit(@PathVariable("topicId") Long topicId, @ModelAttribute Topic updatedTopic) {
+        Topic topic = topicService.getTopicById(topicId);
+        topic.setTitle(updatedTopic.getTitle());
+        topic.setTitle(updatedTopic.getTitle());
+        topicService.updateTopic(topic);
+        return "redirect:/topic";
+    }
 }

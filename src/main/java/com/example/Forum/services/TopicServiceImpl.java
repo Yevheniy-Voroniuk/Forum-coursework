@@ -29,4 +29,14 @@ public class TopicServiceImpl implements TopicService {
     public Topic getTopicById(Long topicId) {
         return topicRepository.findById(topicId).orElse(null);
     }
+
+    @Override
+    public void updateTopic(Topic updatedTopic) {
+        Topic existingTopic = topicRepository.findById(updatedTopic.getTopicId()).orElse(null);
+        if (existingTopic != null) {
+            existingTopic.setTitle(updatedTopic.getTitle());
+            existingTopic.setTitle(updatedTopic.getTitle());
+            topicRepository.save(existingTopic);
+        }
+    }
 }
