@@ -8,9 +8,12 @@ import com.example.Forum.services.PostService;
 import com.example.Forum.services.TopicService;
 import com.example.Forum.services.UserService;
 import com.example.Forum.services.CommentService;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -40,7 +43,11 @@ public class PostController {
     }
 
     @PostMapping("/topic/{topicId}/add")
-    public String createPostSubmit(@PathVariable("topicId") Long topicId, @ModelAttribute Post post, Principal principal) {
+    public String createPostSubmit(@PathVariable("topicId") Long topicId, @Valid @ModelAttribute Post post, BindingResult bindingResult, Principal principal) {
+        if (bindingResult.hasErrors()) {
+            return "post-add";
+        }
+
         Topic topic = topicService.getTopicById(topicId);
         User author = userService.findByUsername(principal.getName());
         post.setTopic(topic);

@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Table(name = "post")
@@ -19,10 +22,13 @@ public class Post {
     @Column(name = "postId")
     private Long postId;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @Size(max = 200, message = "Максимальна довжина - {max} символів")
+    @Column(name = "title")
     private String title;
 
-    @Column(name = "content", nullable = false, length = 2000)
+    @NotBlank(message = "Вміст не може бути пустим")
+    @Size(max = 2000, message = "На жаль, максимальна довжина - {max} символів")
+    @Column(name = "content")
     private String content;
 
     @ManyToOne
