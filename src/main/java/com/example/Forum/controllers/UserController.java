@@ -1,10 +1,13 @@
 package com.example.Forum.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.example.Forum.models.User;
 import com.example.Forum.models.enums.Role;
 import com.example.Forum.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -20,17 +23,23 @@ public class UserController {
     }
 
     @GetMapping("/registration")
-    public String registration() {
+    public String registration(Model model) {
+        model.addAttribute("user", new User());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String addUser(User user, Map<String, Object> model) {
-        User userDb = userService.findByUsername(user.getUsername());
-        if (userDb != null) {
-            model.put("error", "Користувач вже існує :(");
+    public String addUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
             return "registration";
         }
+
+        User userDb = userService.findByUsername(user.getUsername());
+        if (userDb != null) {
+            model.addAttribute("error", "Користувач вже існує :(");
+            return "registration";
+        }
+
         String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
         user.setPassword(encodedPassword);
         user.setActive(true);

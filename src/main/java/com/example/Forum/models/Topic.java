@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.util.List;
 
 @Entity
@@ -18,7 +20,8 @@ public class Topic {
     @Column(name = "topicId")
     private Long topicId;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @NotBlank(message = "Тема не може бути пустою")
+    @Size(max = 50, message = "Назва теми може містити не більше {max} символів")
     private String title;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.REMOVE)

@@ -33,18 +33,36 @@
 </head>
 <body>
 <div class="container">
-    <h1>Реєстрація адміністратора</h1>
+    <h1>Давайте зареєструємося :)</h1>
     <form th:action="@{/admin-registration}" method="post" th:object="${admin}">
-        <div><label for="username"></label><input type="text" id="username" name="username"
-                                                  placeholder="ім'я адміністратора"/></div>
-        <div><label for="password"></label><input type="password" id="password" name="password" placeholder="пароль"/>
+        <div th:if="${error}" class="alert alert-danger">
+            <p th:text="${error}"></p>
         </div>
-        <div><label for="adminKey"></label><input type="text" id="adminKey" name="adminKey"
-                                                  placeholder="ключ адміністратора"/></div>
-        <div><input type="submit" value="Зареєструватися" class="btn btn-primary"/></div>
+        <div>
+            <input type="text" id="username" name="username" placeholder="ім'я користувача"
+                   th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{username}"></span>
+        </div>
+        <div>
+            <input type="password" id="password" name="password" placeholder="пароль"
+                   th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{password}"></span>
+        </div>
+        <div>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="підтвердження паролю"
+                   th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{confirmPassword}"></span>
+        </div>
+        <div>
+            <input type="password" id="adminKey" name="adminKey" placeholder="ключ"
+                   th:classappend="${#fields.hasErrors('adminKey')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{adminKey}"></span>
+        </div>
+        <div>
+            <input type="submit" value="Реєстрація" class="btn btn-primary"/>
+        </div>
+        <a class="btn btn-primary" href="/" placeholder="На головну">На головну</a>
     </form>
-    <br>
-    <a class="btn btn-primary" href="/" placeholder="На головну">На головну</a>
 </div>
 </body>
 </html>

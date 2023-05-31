@@ -2,9 +2,11 @@ package com.example.Forum.controllers;
 
 import com.example.Forum.models.Topic;
 import com.example.Forum.services.TopicService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -30,7 +32,10 @@ public class TopicController {
     }
 
     @PostMapping("/topic/add")
-    public String createTopicSubmit(@ModelAttribute Topic topic) {
+    public String createTopicSubmit(@Valid @ModelAttribute Topic topic, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "topic-add";
+        }
         topicService.createTopic(topic);
         return "redirect:/topic";
     }
@@ -43,12 +48,16 @@ public class TopicController {
     }
 
     @PostMapping("/topic/{topicId}/edit")
-    public String editTopicSubmit(@PathVariable("topicId") Long topicId, @ModelAttribute Topic updatedTopic) {
+    public String editTopicSubmit(@PathVariable("topicId") Long topicId, @Valid @ModelAttribute("topic") Topic updatedTopic, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "topic-edit";
+        }
         Topic topic = topicService.getTopicById(topicId);
         topic.setTitle(updatedTopic.getTitle());
         topicService.updateTopic(topic);
         return "redirect:/topic";
     }
+
 
     @PostMapping("/topic/{topicId}/remove")
     public String deleteTopic(@PathVariable("topicId") Long topicId) {

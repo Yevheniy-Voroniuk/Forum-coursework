@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
 <head>
     <title>Реєстрація</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -33,13 +33,28 @@
 <body>
 <div class="container">
     <h1>Давайте зареєструємося :)</h1>
-    <form th:action="@{/registration}" method="post">
+    <form th:action="@{/registration}" method="post" th:object="${user}">
         <div th:if="${error}" class="alert alert-danger">
             <p th:text="${error}"></p>
         </div>
-        <div><input type="text" id="username" name="username" placeholder="ім'я користувача"/></div>
-        <div><input type="password" id="password" name="password" placeholder="пароль"/></div>
-        <div><input type="submit" value="Реєстрація" class="btn btn-primary"/></div>
+        <div>
+            <input type="text" id="username" name="username" placeholder="ім'я користувача"
+                   th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{username}"></span>
+        </div>
+        <div>
+            <input type="password" id="password" name="password" placeholder="пароль"
+                   th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{password}"></span>
+        </div>
+        <div>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="підтвердження паролю"
+                   th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
+            <span class="text-danger" th:errors="*{confirmPassword}"></span>
+        </div>
+        <div>
+            <input type="submit" value="Реєстрація" class="btn btn-primary"/>
+        </div>
         <a class="btn btn-primary" href="/" placeholder="На головну">На головну</a>
     </form>
 </div>

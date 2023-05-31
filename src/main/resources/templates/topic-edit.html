@@ -9,11 +9,13 @@
 <header th:replace="~{blocks/header :: header}"></header>
 <div class="container mt-5">
     <h1>Редагування теми</h1>
-    <form th:action="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" method="post">
-        <label>
-            <input type="text" name="title" th:value="${topic.title}" placeholder="Введіть нову назву теми"
-                   class="form-control">
-        </label>
+    <form th:action="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" method="post" th:object="${topic}">
+        <div class="form-group">
+            <label for="title">Назва теми:</label>
+            <input type="text" id="title" name="title" placeholder="Напишіть тему"
+                   class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"/>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+        </div>
         <button type="submit" class="button btn btn-warning">Зберегти зміни</button>
     </form>
 </div>
