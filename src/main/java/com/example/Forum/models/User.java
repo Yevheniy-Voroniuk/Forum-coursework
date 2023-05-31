@@ -38,7 +38,6 @@ public class User {
 
     boolean active;
 
-    @NotBlank(message = "Ключ адміністратора не може бути порожнім")
     private String adminKey;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)

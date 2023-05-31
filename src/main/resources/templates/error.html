@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <style>
+        body {
+            background-color: #f8f8f8;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        h1 {
+            color: #ff0000;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    <span th:text="${errorCode}">Статус-код помилки</span></h1>
+<p><span th:text="${errorMessage}">Повідомлення про помилку</span></p>
+</body>
+</html>
