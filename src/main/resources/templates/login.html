@@ -1,63 +1,39 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Авторизація</title>
+    <title>Authorization</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 400px;
-            text-align: center;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        input[type="submit"],
-        a.btn {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/registration.css">
 </head>
-<body>
-
+<body class="registration-form">
 <div class="container">
-    <h1>Авторизація</h1>
+    <h1>Authorization</h1>
     <div th:if="${param.error}" class="alert alert-danger">
-        Неправильне ім'я чи пароль :(
+        Invalid username or password :(
     </div>
     <div th:if="${param.logout}">
-        Ви вийшли з облікового запису
+        You have been logged out
     </div>
     <form th:action="@{/login}" method="post">
-        <div><label for="username"></label><input type="text" id="username" name="username"
-                                                  placeholder="ім'я користувача"/></div>
-        <div><label for="password"></label><input type="password" id="password" name="password" placeholder="пароль"/>
+        <div><label for="username"></label><input type="text" id="username" name="username" placeholder="Username"/>
         </div>
-        <div><input type="submit" value="Війти" class="btn btn-primary"/></div>
+        <div><label for="password"></label><input type="password" id="password" name="password" placeholder="Password"/>
+        </div>
+        <div><input type="submit" value="Login" class="btn btn-primary"/></div>
     </form>
     <br>
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Вийти з акаунту" class="btn btn-secondary"/>
+        <input type="submit" value="Logout" class="btn btn-secondary"/>
     </form>
     <br>
-    <a class="btn btn-primary" href="/registration" placeholder="Зареєструватися">Зареєструватися</a>
-    <a class="btn btn-primary" href="/admin-registration" placeholder="Авторизація для адміна">Авторизація для
-        адміна</a>
+    <a class="btn btn-primary" href="/registration" placeholder="Register">Register</a>
+    <a class="btn btn-primary" href="/admin-registration" placeholder="Admin Authorization">Admin Authorization</a>
     <br>
-    <a class="btn btn-primary" href="/" placeholder="На головну">На головну</a>
+    <a class="btn btn-primary" href="/" placeholder="Home">Home</a>
 </div>
 </body>
 </html>

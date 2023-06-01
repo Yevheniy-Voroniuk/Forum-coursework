@@ -21,19 +21,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @NotBlank(message = "Ім'я користувача не може бути пустим")
-    @Size(max = 30, message = "Максимальна довжина для ім'я користувача - {max} символів")
+    @NotBlank(message = "Username cannot be empty")
+    @Size(max = 30, message = "Maximum username length is {max} characters")
     @Column(length = 30)
     String username;
 
-    @NotBlank(message = "Пароль не може бути пустим")
-    @Size(min = 8, message = "Пароль має містити від {min} символів")
+    @NotBlank(message = "Password cannot be empty")
+    @Size(min = 8, message = "Password must contain at least {min} characters")
     String password;
 
-
     @Transient
-    @NotBlank(message = "Пароль не може бути пустим")
-    @Length(min = 8, message = "Пароль має містити від {min} символів")
+    @NotBlank(message = "Confirm password cannot be empty")
+    @Length(min = 8, message = "Confirm password must contain at least {min} characters")
     String confirmPassword;
 
     boolean active;
