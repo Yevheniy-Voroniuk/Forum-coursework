@@ -1,0 +1,33 @@
+.rounded-rectangle,
+.colored-button {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    border-radius: 26px;
+    padding: 8px 16px;
+    margin-top: 16px;
+    margin-right: 6px;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.rounded-rectangle {
+    background-color: rgba(127, 80, 164, 0.6);
+}
+
+.colored-button {
+    background-color: rgba(74, 144, 226, 0.6);
+}
+
+.colored-button:hover {
+    background-color: #266c89;
+}
+
+.site-name {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 40px;
+    color: #7B68EE;
+    margin-left: 16px;
+    margin-top: 16px;
+}
