@@ -20,8 +20,8 @@ public class Topic {
     @Column(name = "topicId")
     private Long topicId;
 
-    @NotBlank(message = "Тема не може бути пустою")
-    @Size(max = 50, message = "Назва теми може містити не більше {max} символів")
+    @NotBlank(message = "Topic cannot be empty")
+    @Size(max = 50, message = "Topic title can contain a maximum of {max} characters")
     private String title;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.REMOVE)

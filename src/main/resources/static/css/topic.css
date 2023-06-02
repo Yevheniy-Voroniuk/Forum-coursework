@@ -1,0 +1,38 @@
+body {
+    background-image: url(../images/topic.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+}
+
+.btn-burlywood {
+    background-color: #00BFFF;
+    width: 150px;
+    height: 40px;
+    border-radius: 22px;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 24px;
+    color: #00BFFF;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    color: red;
+}

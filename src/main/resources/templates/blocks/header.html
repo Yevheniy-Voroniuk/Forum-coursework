@@ -7,8 +7,7 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Ubuntu:ital@1&display=swap"
                   rel="stylesheet">
-            <link rel="stylesheet" href="../css/header.css">
-
+            <link rel="stylesheet" th:href="@{/css/header.css}" />
             <span class="site-name">Comprehensive Discussions Forum</span>
             <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                 <form th:action="@{/topic/add}" method="get">
@@ -36,9 +35,9 @@
                             class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Usage
                     </button>
                 </form>
-                <form th:action="@{/logout}" method="post">
+                <form th:action="@{/login}" method="post">
                     <button type="submit"
-                            class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Log Out
+                            class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Log In
                     </button>
                 </form>
             </nav>

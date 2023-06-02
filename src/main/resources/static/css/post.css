@@ -1,0 +1,33 @@
+body {
+    background-image: url(../images/topic.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: #00BFFF;
+}
+
+.form-control {
+    border-color: #00BFFF;
+}
+
+.form-control.is-invalid,
+.btn {
+    border-radius: 25px;
+}
+
+.btn.btn-success {
+    background-color: #00BFFF;
+    border-color: #00BFFF;
+    border-radius: 22px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+}

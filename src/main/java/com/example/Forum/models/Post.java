@@ -22,12 +22,12 @@ public class Post {
     @Column(name = "postId")
     private Long postId;
 
-    @Size(max = 200, message = "Максимальна довжина - {max} символів")
+    @Size(max = 200, message = "Maximum length is {max} characters")
     @Column(name = "title")
     private String title;
 
-    @NotBlank(message = "Вміст не може бути пустим")
-    @Size(max = 2000, message = "На жаль, максимальна довжина - {max} символів")
+    @NotBlank(message = "Content cannot be empty")
+    @Size(max = 2000, message = "Maximum length is {max} characters")
     @Column(name = "content")
     private String content;
 

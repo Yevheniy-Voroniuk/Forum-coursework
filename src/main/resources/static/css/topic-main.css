@@ -1,0 +1,55 @@
+body {
+    background-image: url(../images/topic.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-size: 16px;
+}
+
+.topic-link {
+    font-size: 28px;
+    color: #1E90FF;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.topic-link:hover {
+    text-decoration: none;
+}
+
+.edit-delete-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-custom-edit,
+.btn-custom-delete {
+    font-size: 16px;
+    color: #fff;
+    background-color: #1E90FF;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.btn-custom-edit:hover {
+    background-color: #0066CC;
+}
+
+.btn-custom-delete:hover {
+    background-color: #CC0000;
+}
