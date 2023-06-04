@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
 <head>
     <meta charset="UTF-8">
     <title>Post Details</title>
@@ -28,12 +28,14 @@
             <form th:action="@{'/topic/' + ${topicId} + '/' + ${postId} + '/add-comment'}" method="post"
                   th:object="${newComment}">
                 <div class="form-group">
-                    <textarea id="content" name="content" class="form-control"
-                              th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'"></textarea>
+                    <label for="content"></label><textarea id="content" name="content" class="form-control"
+                                                           th:classappend="${#fields.hasErrors('content')} ? 'is-invalid'"></textarea>
                     <div class="invalid-feedback" th:if="${#fields.hasErrors('content')}"
                          th:errors="*{content}"></div>
                 </div>
-                <button type="submit" class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Submit</button>
+                <button type="submit" class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">
+                    Submit
+                </button>
             </form>
         </div>
     </div>

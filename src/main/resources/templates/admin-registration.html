@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="uk">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Administrator Registration</title>
@@ -17,24 +17,25 @@
             <p th:text="${error}"></p>
         </div>
         <div>
-            <input type="text" id="username" name="username" placeholder="Username"
-                   th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"/>
+            <label for="username"></label><input type="text" id="username" name="username" placeholder="Username"
+                                                 th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{username}"></span>
         </div>
         <div>
-            <input type="password" id="password" name="password" placeholder="Password"
-                   th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"/>
+            <label for="password"></label><input type="password" id="password" name="password" placeholder="Password"
+                                                 th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{password}"></span>
         </div>
         <div>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
-                   th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
+            <label for="confirmPassword"></label><input type="password" id="confirmPassword" name="confirmPassword"
+                                                        placeholder="Confirm Password"
+                                                        th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{confirmPassword}"></span>
             <span class="text-danger" th:if="${#fields.hasErrors('password') && !#fields.hasErrors('confirmPassword')}">Passwords do not match</span>
         </div>
         <div>
-            <input type="password" id="adminKey" name="adminKey" placeholder="Key"
-                   th:classappend="${#fields.hasErrors('adminKey')} ? 'is-invalid'"/>
+            <label for="adminKey"></label><input type="password" id="adminKey" name="adminKey" placeholder="Key"
+                                                 th:classappend="${#fields.hasErrors('adminKey')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{adminKey}"></span>
         </div>
         <div>

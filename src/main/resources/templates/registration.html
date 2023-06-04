@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <title>Registration</title>
@@ -17,18 +17,19 @@
             <p th:text="${error}"></p>
         </div>
         <div>
-            <input type="text" id="username" name="username" placeholder="Username"
-                   th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"/>
+            <label for="username"></label><input type="text" id="username" name="username" placeholder="Username"
+                                                 th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{username}"></span>
         </div>
         <div>
-            <input type="password" id="password" name="password" placeholder="Password"
-                   th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"/>
+            <label for="password"></label><input type="password" id="password" name="password" placeholder="Password"
+                                                 th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{password}"></span>
         </div>
         <div>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
-                   th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
+            <label for="confirmPassword"></label><input type="password" id="confirmPassword" name="confirmPassword"
+                                                        placeholder="Confirm Password"
+                                                        th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{confirmPassword}"></span>
         </div>
 

@@ -15,8 +15,9 @@
     <h1>Edit Topic</h1>
     <form th:action="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" method="post" th:object="${topic}">
         <div class="form-group">
-            <input type="text" id="title" name="title" placeholder="Enter topic title"
-                   class="form-control" th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"/>
+            <label for="title"></label><input type="text" id="title" name="title" placeholder="Enter topic title"
+                                              class="form-control"
+                                              th:classappend="${#fields.hasErrors('title')} ? 'is-invalid'"/>
             <div class="invalid-feedback" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
                  th:class="error-message"></div>
         </div>
