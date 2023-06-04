@@ -3,6 +3,7 @@ package com.example.Forum.controllers;
 import com.example.Forum.models.User;
 import com.example.Forum.models.enums.Role;
 import com.example.Forum.services.UserService;
+
 import jakarta.validation.Valid;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -38,13 +39,18 @@ public class AdminController {
         }
 
         if (!adminKey.equals("TEST-KEY")) {
-            model.addAttribute("error", "Помилковий ключ адміністратора :(");
+            model.addAttribute("error", "Invalid administrator key :(");
             return "admin-registration";
         }
 
         User userDb = userService.findByUsername(admin.getUsername());
         if (userDb != null) {
-            model.addAttribute("error", "Користувач вже існує :(");
+            model.addAttribute("error", "User already exists :(");
+            return "admin-registration";
+        }
+
+        if (!admin.getPassword().equals(admin.getConfirmPassword())) {
+            bindingResult.rejectValue("confirmPassword", "error", "Passwords do not match");
             return "admin-registration";
         }
 

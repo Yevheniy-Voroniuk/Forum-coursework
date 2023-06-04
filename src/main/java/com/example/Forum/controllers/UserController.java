@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -36,7 +35,12 @@ public class UserController {
 
         User userDb = userService.findByUsername(user.getUsername());
         if (userDb != null) {
-            model.addAttribute("error", "Користувач вже існує :(");
+            model.addAttribute("error", "User already exists :(");
+            return "registration";
+        }
+
+        if (!user.getPassword().equals(user.getConfirmPassword())) {
+            bindingResult.rejectValue("confirmPassword", "error", "Passwords do not match");
             return "registration";
         }
 

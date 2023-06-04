@@ -2,15 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
     <title>Error</title>
     <link rel="stylesheet" th:href="@{/css/error.css}"/>
 </head>
 <body>
 <h1>
     <span th:text="${errorCode}">Error Status Code</span>
-</h1>
-<p>
+    <span> </span>
     <span th:text="${errorMessage}">Error Message</span>
-</p>
+</h1>
 </body>
 </html>

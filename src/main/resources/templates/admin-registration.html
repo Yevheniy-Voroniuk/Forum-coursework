@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/registration.css">
+    <link rel="stylesheet" th:href="@{css/registration.css}">
 </head>
 <body class="registration-form">
 <div class="container">
@@ -30,6 +30,7 @@
             <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
                    th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'"/>
             <span class="text-danger" th:errors="*{confirmPassword}"></span>
+            <span class="text-danger" th:if="${#fields.hasErrors('password') && !#fields.hasErrors('confirmPassword')}">Passwords do not match</span>
         </div>
         <div>
             <input type="password" id="adminKey" name="adminKey" placeholder="Key"
