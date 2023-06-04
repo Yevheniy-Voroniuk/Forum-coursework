@@ -24,18 +24,18 @@ public class CustomErrorController implements ErrorController {
                     statusCode == HttpStatus.FORBIDDEN.value()) {
                 model.addAttribute("errorCode", statusCode);
                 if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                    model.addAttribute("errorMessage", "Сторінку не знайдено");
+                    model.addAttribute("errorMessage", "Page Not Found");
                 } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                    model.addAttribute("errorMessage", "Внутрішня помилка серверу");
+                    model.addAttribute("errorMessage", "Internal Server Error");
                 } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
-                    model.addAttribute("errorMessage", "Доступ заборонено");
+                    model.addAttribute("errorMessage", "Access Forbidden");
                 }
                 return "error";
             }
         }
 
-        model.addAttribute("errorCode", "Невідома помилка");
-        model.addAttribute("errorMessage", "Сталася помилка");
+        model.addAttribute("errorCode", "Unknown Error");
+        model.addAttribute("errorMessage", "An error occurred");
         return "error";
     }
 }

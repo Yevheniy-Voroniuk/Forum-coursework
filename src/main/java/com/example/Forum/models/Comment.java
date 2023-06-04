@@ -17,8 +17,8 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentId;
 
-    @NotBlank(message = "Не можна залишати пустий коментар")
-    @Length(max = 1000, message = "Коментар може містити не більше {max} символів")
+    @NotBlank(message = "Comment cannot be empty")
+    @Length(max = 1000, message = "Comment can contain a maximum of {max} characters")
     @Column(name = "content")
     private String content;
 
