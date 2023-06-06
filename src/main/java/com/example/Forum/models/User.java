@@ -21,11 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Pattern(regexp = "^(?=.*[a-zA-Z])[a-zA-Z0-9]{3,40}$",
-            message = "Username must contain at least one letter and can consist of 3-40 characters")
+    @Pattern(regexp = "^(?=.*[a-zA-Z])[a-zA-Z0-9\\s]{3,60}$",
+            message = "Username must contain at least one letter and can consist of 3-60 characters")
     @NotBlank(message = "Username cannot be empty")
-    @Size(max = 40, message = "Maximum username length is {max} characters")
-    @Column(length = 40)
+    @Size(max = 60, message = "Maximum username length is {max} characters")
+    @Column(length = 60)
     String username;
 
     @NotBlank(message = "Password cannot be empty")

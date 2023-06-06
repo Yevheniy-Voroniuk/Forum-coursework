@@ -26,7 +26,7 @@
         <div th:each="post : ${posts}" class="post-box">
             <h4 th:text="${post.title}" class="text-left"></h4>
             <p th:text="${post.content}" class="text-left"></p>
-            <p><span th:text="'Author @'+${post.author.username}"></span></p>
+            <p><span th:text="'@ '+${post.author.username}"></span></p>
             <form th:action="@{/topic/{topicId}/{postId}(topicId=${post.topic.topicId}, postId=${post.postId})}"
                   method="get" sec:authorize="isAuthenticated()">
                 <button type="submit"

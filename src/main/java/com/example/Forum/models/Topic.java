@@ -21,7 +21,7 @@ public class Topic {
     private Long topicId;
 
     @NotBlank(message = "Topic cannot be empty")
-    @Size(max = 50, message = "Topic title can contain a maximum of {max} characters")
+    @Size(max = 100, message = "Topic title can contain a maximum of {max} characters")
     private String title;
 
     @OneToMany(mappedBy = "topic", cascade = CascadeType.REMOVE)

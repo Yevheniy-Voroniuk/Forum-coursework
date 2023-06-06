@@ -7,7 +7,7 @@ body {
 
 .topic-link {
     font-family: 'Quicksand', sans-serif;
-    color: #1E90FF;
+    color: #483D8B;
     text-decoration: none;
     padding: 4px 16px;
     border-radius: 4px;
@@ -15,7 +15,7 @@ body {
 }
 
 .text-center {
-    font-size: 52px;
+    font-size: 44px;
     text-align: center;
 }
 
