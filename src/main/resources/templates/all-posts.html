@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="uk">
 <head>
     <title>All Posts</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -14,9 +16,15 @@
 <div class="container mt-5">
     <div class="post-container">
         <div th:each="post : ${posts}" class="post-box">
-            <h4 th:text="${post.topic.title} + ' -> ' + ${post.title}"></h4>
+            <h4 th:text="${post.title}"></h4>
             <p th:text="${post.content}"></p>
             <p><span th:text="'Author @'+${post.author.username}"></span></p>
+            <form th:action="@{/topic/{topicId}/{postId}(topicId=${post.topic.topicId}, postId=${post.postId})}"
+                  method="get" sec:authorize="isAuthenticated()">
+                <button type="submit"
+                        class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Learn More
+                </button>
+            </form>
         </div>
     </div>
 </div>

@@ -7,9 +7,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
 import javax.sql.DataSource;
 
 @Configuration
@@ -24,7 +26,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/topic/add", "/topic/{topicId}/edit", "/topic/{topicId}/remove")
                         .hasAuthority("ADMIN")
-                        .requestMatchers("/topic/{topicId}/add", "//topic/{topicId}/{postId}/add", "/topic/{topicId}/{postId}/add-comment")
+                        .requestMatchers("/topic/{topicId}/add", "/topic/{topicId}/{postId}/add", "/topic/{topicId}/{postId}", "/topic/{topicId}/{postId}/add-comment")
                         .authenticated()
                         .anyRequest()
                         .permitAll()
@@ -33,7 +35,7 @@ public class WebSecurityConfig {
                         .loginPage("/login")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll());
+                .logout(LogoutConfigurer::permitAll);
 
         return http.build();
     }

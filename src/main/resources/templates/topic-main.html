@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
     <title>Topics</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -17,11 +19,14 @@
             <h4 th:text="${topic.title}" class="text-center"></h4>
         </a>
         <div class="edit-delete-buttons">
-            <a th:href="@{/topic/{topicId}/edit(topicId=${topic.topicId})}"
-               class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Edit</a>
+            <form th:action="@{/topic/{topicId}/edit(topicId=${topic.topicId})}" method="post" class="edit-form">
+                <button type="submit" class="button me-3 py-2 text-decoration-none colored-button"
+                        sec:authorize="hasAnyAuthority('ADMIN')">Edit
+                </button>
+            </form>
             <form th:action="@{/topic/{topicId}/remove(topicId=${topic.topicId})}" method="post" class="delete-form">
-                <button type="submit" class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">
-                    Delete
+                <button type="submit" class="button me-3 py-2 text-decoration-none colored-button"
+                        sec:authorize="hasAnyAuthority('ADMIN')">Delete
                 </button>
             </form>
         </div>

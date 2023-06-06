@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="uk">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="uk">
 <header>
     <div th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
         <div class="header2 d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -12,9 +14,10 @@
             <link rel="stylesheet" th:href="@{/css/header.css}"/>
             <span class="site-name">Comprehensive Discussions Forum</span>
             <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                <form th:action="@{/topic/add}" method="get">
+                <form th:action="@{/topic/add}" method="post">
                     <button type="submit"
-                            class="button me-3 py-2 text-decoration-none colored-button">Add Topic
+                            class="button me-3 py-2 text-decoration-none colored-button"
+                            sec:authorize="hasAnyAuthority('ADMIN')">Add Topic
                     </button>
                 </form>
                 <form th:action="@{/}" method="get">

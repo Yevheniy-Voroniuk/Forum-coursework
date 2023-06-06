@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
     <title>Posts by Topic</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -8,29 +10,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/posts.css}">
+    <link rel="stylesheet" th:href="@{/css/topic-main.css}">
 </head>
 <body>
 <header th:insert="~{blocks/header :: header}"></header>
 <div class="container mt-5">
+    <h2 class="topic-link"><span th:text="${topic.title}"></span></h2>
+
+    <form th:action="@{/topic/{topicId}/add(topicId=${topicId})}" method="get" sec:authorize="isAuthenticated()">
+        <button type="submit"
+                class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle mx-auto d-block">Add Post
+        </button>
+    </form>
     <div class="post-container">
         <div th:each="post : ${posts}" class="post-box">
             <h4 th:text="${post.title}" class="text-left"></h4>
             <p th:text="${post.content}" class="text-left"></p>
             <p><span th:text="'Author @'+${post.author.username}"></span></p>
             <form th:action="@{/topic/{topicId}/{postId}(topicId=${post.topic.topicId}, postId=${post.postId})}"
-                  method="get">
+                  method="get" sec:authorize="isAuthenticated()">
                 <button type="submit"
                         class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle">Learn More
                 </button>
             </form>
         </div>
     </div>
-    <form th:action="@{/topic/{topicId}/add(topicId=${topicId})}" method="get">
-        <button type="submit"
-                class="button me-3 py-2 text-decoration-none colored-button rounded-rectangle mx-auto d-block">Add Post
-        </button>
-    </form>
-    <div th:each="post : ${posts}"></div>
 </div>
 <div th:insert="~{blocks/footer :: footer}"></div>
 </body>

@@ -60,6 +60,10 @@ public class PostController {
     public String showPostsByTopic(@PathVariable("topicId") Long topicId, Model model) {
         List<Post> postsByTopic = postService.getAllPostsByTopic(topicId);
         model.addAttribute("posts", postsByTopic);
+
+        Topic topic = topicService.getTopicById(topicId);
+        model.addAttribute("topic", topic);
+
         return "posts-by-topic";
     }
 

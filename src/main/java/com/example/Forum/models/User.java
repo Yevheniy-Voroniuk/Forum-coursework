@@ -32,6 +32,7 @@ public class User {
     @Size(min = 8, message = "Password must contain at least {min} characters")
     String password;
 
+    @Transient
     @NotBlank(message = "Confirm password cannot be empty")
     @Length(min = 8, message = "Confirm password must contain at least {min} characters")
     String confirmPassword;
